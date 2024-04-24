@@ -1,0 +1,12 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: image-analyzer-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: image-analyzer
+  ports:
+  - port: 4000
+    targetPort: 4000
+    protocol: TCP

@@ -1,0 +1,23 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-analyzer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-analyzer
+  template:
+    metadata:
+      labels:
+        app: image-analyzer
+    spec:
+      containers:
+      - name: image-analyzer
+        image: imageanalyzerregistry.azurecr.io/imageanalyzer:latest
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
